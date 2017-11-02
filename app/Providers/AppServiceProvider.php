@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Queue::failing(function (JobFailed $event) {
-            Log::info("Job Falhou ".$event->job." ".$event->exception);
+            Log::info("Job Falhou ".$event->job);
             // $event->connectionName
             // $event->job
             // $event->exception

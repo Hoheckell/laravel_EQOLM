@@ -19,6 +19,7 @@ class CreateImportationsTable extends Migration
             $table->integer('totalines');
             $table->integer('donelines');
             $table->boolean('imported')->default(false);
+            $table->boolean('error')->default(false);
             $table->timestamps();
         });
     }

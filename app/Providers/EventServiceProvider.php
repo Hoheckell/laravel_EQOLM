@@ -16,8 +16,8 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
-        'App\Events\Importation' => [
-            'App\Listeners\ImportationListener',
+        'App\Events\ContatoSaved' => [
+            'App\Listeners\ContatoSavedListener',
         ],
     ];
 

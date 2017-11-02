@@ -1,36 +1,31 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hoheckell
+ * Date: 02/11/17
+ * Time: 17:59
+ */
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
+
+use App\Contato;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class ContatoSaved
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use SerializesModels;
+
+    public $contato;
 
     /**
      * Create a new event instance.
      *
+     * @param  Order  $order
      * @return void
      */
-    public function __construct()
+    public function __construct(Contato $contato)
     {
-        //
-    }
-
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
+        $this->contato = $contato;
     }
 }

@@ -19,7 +19,7 @@ class ProcessFile implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
 
-    protected $model;
+    public $model;
 
     /**
      * Create a new job instance.

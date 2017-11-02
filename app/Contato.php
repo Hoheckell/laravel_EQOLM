@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\ContatoSaved;
 use Illuminate\Database\Eloquent\Model;
 
 class Contato extends Model
@@ -17,7 +18,7 @@ class Contato extends Model
         'facebook'
     ];
 
-//    protected $dispatchesEvents = [
-//        'saved' => ContatoSaved::class
-//    ];
+    protected $dispatchesEvents = [
+        'saved' => ContatoSaved::class
+    ];
 }
