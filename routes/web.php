@@ -13,3 +13,4 @@
 
 Route::get('/', "ImportController@index");
 Route::post('/upload', 'ImportController@upload');
+Route::get('/importations', 'ImportController@importations');

@@ -41,8 +41,15 @@ class ImportController extends Controller
             die($e->getMessage());
         }
 
-        return redirect()->back()->with('success',"Arquivo Agendado apra importação");
+        return redirect('/importations')->with('success',"Arquivo Agendado apra importação");
 
+    }
+
+    public function importations(){
+        $data = [
+            'importations'=>Importation::all()
+        ];
+        return view('importations',$data);
     }
 
 

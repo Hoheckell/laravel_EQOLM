@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImportationsTable extends Migration
+class CreateTableContatos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateImportationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('importations', function (Blueprint $table) {
+        Schema::create('contatos', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->integer('totalines');
-            $table->integer('donelines');
-            $table->boolean('imported')->default(false);
+            $table->string('email');
+            $table->string('telefone');
+            $table->text('endereco');
+            $table->string('facebook');
             $table->timestamps();
         });
     }
@@ -30,7 +31,7 @@ class CreateImportationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('importations', function (Blueprint $table) {
+        Schema::table('contatos', function (Blueprint $table) {
             //
         });
     }

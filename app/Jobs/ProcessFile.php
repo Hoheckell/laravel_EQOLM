@@ -38,24 +38,43 @@ class ProcessFile implements ShouldQueue
     {
         try {
             $importations = Importation::where('imported', 0)->get();
-            $row = 1;
-            foreach ($importations as $i) {
-                if (($handle = fopen(public_path() . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $i->name, "r")) !== FALSE) {
-                    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-                        $num = count($data);
-                        echo "<p> $num campos na linha $row: <br /></p>\n";
-                        $row++;
-                        $imported = Importation::create([
-                            'name' => $data[0],
-                            'email' => $data[1],
-                            'telefone' => $data[2],
-                            'endereco' => $data[3],
-                            'faceboo' => $data[4],
-                        ]);
-                        $imported->imported = 1;
-                        $imported->save();
+            $file = NULL;
+            if(!empty($importations)) {
+                try {
+                    foreach ($importations as $i) {
+                        try {
+                            if (empty($file)) {
+                                $file = file(public_path() . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $i->name);
+                                if ($i->totalines == 0) {
+                                    $i->totalines = count($file);
+                                }
+                            }
+                            if (($handle = fopen(public_path() . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $i->name, "r")) !== FALSE) {
+                                while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                                    $imported = Contato::create([
+                                        'name' => $data[0],
+                                        'email' => $data[1],
+                                        'telefone' => $data[2],
+                                        'endereco' => $data[3],
+                                        'faceboo' => $data[4],
+                                    ]);
+                                    $i->donelines += 1;
+                                    $i->imported = 1;
+                                    $i->save();
+                                }
+                                fclose($handle);
+                            }
+                            $file = NULL;
+                        }catch (\Exception $e){
+                            $i->error = 1;
+                            $i->save();
+                            Log::error($e->getMessage()." ".$e->getFile()." ".$e->getLine());
+                            echo $e->getMessage();
+                        }
                     }
-                    fclose($handle);
+                }catch (\Exception $e){
+                    Log::error($e->getMessage()." ".$e->getFile()." ".$e->getLine());
+                    echo $e->getMessage();
                 }
             }
 

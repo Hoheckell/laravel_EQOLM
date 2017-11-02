@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Import File</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -10,7 +10,8 @@
 
     <div class="row">
         <div class="col-12">
-            <h1>Agendamento de importação</h1>
+            <h1>Envio para importação</h1>
+            <p>O arquivo enviado entrará em uma fila de processamento.</p>
             @if(session('success'))
                 <div class="alert alert-success">{{session('success')}}</div>
             @endif
