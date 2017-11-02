@@ -28,12 +28,12 @@ class ImportController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $fileName = 'file_' . date('d_m_Y_h_i_s') . "_." . $extension;
 
-                Importation::create([
+                $importation = Importation::create([
                     'name' => $fileName
                 ]);
                 //var_dump($file->move($destinationPath.DIRECTORY_SEPARATOR.'tmp'));
                 $file->move($destinationPath, $fileName);
-                $job = (new ProcessFile())->delay(Carbon::now()->addMinute());
+                $job = (new ProcessFile($importation))->delay(Carbon::now()->addMinute());
                 $this->dispatch($job);
             }
 

@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Import File</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-
+@extends('templates.template1')
+@section('title',"IMPORTAÇÂO")
+@section('content')
     <div class="row">
         <div class="col-12">
             <h1>Envio para importação</h1>
@@ -23,6 +16,4 @@
         </div>
     </div>
 </div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    @endsection
