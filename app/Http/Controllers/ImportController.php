@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Console\Commands\ImportFilesCommand;
+use App\Classes\AgentClass;
 use App\Importation;
 use App\Jobs\ProcessFile;
 use Carbon\Carbon;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 use Mockery\Exception;
 
 class ImportController extends Controller
 {
-    public function index(){
-
+    public function index(Schedule $schedule){
         return view('upload');
 
     }
