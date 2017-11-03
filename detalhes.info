@@ -16,10 +16,12 @@ OBS.:
 ////////////////////////////////////////////////////// DETALHES DE CONFIGURAÇÃO
 após configurado o banco de dados é necessário rodar  
 
-php artisan queue:failed-table
-"Para registrar as falhas dos Jobs"
-
 php artisan migrate 
 "Para registrar as taelas do projeto"
+
+//CASO NÂO CRIE A TABELA failed_jobs
+php artisan queue:failed-table
+"Para registrar as falhas dos Jobs e criar a tabela e a migration"
+
 
 Existe arquivos CSV de exemplo na pasta /public/files/
