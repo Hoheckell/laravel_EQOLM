@@ -28,7 +28,6 @@ class ContatoSavedListener
     {
 
         Mail::to('bd55537cb6-35fffd@inbox.mailtrap.io')
-            ->subject('Contato Novo')
             ->send(new ContatoSavedMail($event->contato));
     }
 

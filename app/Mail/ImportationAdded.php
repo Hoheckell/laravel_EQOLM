@@ -30,10 +30,12 @@ class ImportationAdded extends Mailable implements ShouldQueue
      */
     public function build()
     {
+        $file = file(public_path() . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $this->importation->name);
+        $linhas = count($file)-1;
         return $this->view('emails.importationadded')
             ->with([
                 'name' => $this->importation->name,
-                'linhas' => $this->importation->totalines,
+                'linhas' => $linhas,
                 'data' => $this->importation->created_at->format('d/m/Y H:i:s'),
             ]);
     }

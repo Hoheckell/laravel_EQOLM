@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Importation;
+use App\Observers\ImportationObserver;
 use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Queue;
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
             // $event->job
             // $event->exception
         });
+        Importation::observe(ImportationObserver::class);
     }
 
     /**

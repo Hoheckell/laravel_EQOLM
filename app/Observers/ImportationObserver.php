@@ -9,6 +9,7 @@
 namespace App\Observers;
 use App\Importation;
 use App\Mail\ImportationAdded;
+use Illuminate\Support\Facades\Mail;
 
 class ImportationObserver
 {
@@ -16,7 +17,6 @@ class ImportationObserver
     {
 
         Mail::to('bd55537cb6-35fffd@inbox.mailtrap.io')
-            ->subject('Importação nova')
             ->send(new ImportationAdded($importation));
     }
 
