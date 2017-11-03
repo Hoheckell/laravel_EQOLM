@@ -9,6 +9,7 @@
 namespace App\Observers;
 use App\Importation;
 use App\Mail\ImportationAdded;
+use Illuminate\Support\Facades\Mail;
 
 class ImportationObserver
 {
