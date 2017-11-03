@@ -1,7 +1,9 @@
-após configurado o banco de dados é necessário rodar o 
+após configurado o banco de dados é necessário rodar  
 
 php artisan queue:failed-table
 "Para registrar as falhas dos Jobs"
 
 php artisan migrate 
 "Para registrar as taelas do projeto"
+
+Existe arquivos CSV de exemplo na pasta /public/files/
