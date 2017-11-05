@@ -31,3 +31,16 @@ php artisan queue:failed-table
 
 Existe arquivos CSV de exemplo na pasta /public/files/
 
+///// 05/11/2017
+
+[Adicionado agendados de Tarefas (SEM SUPORTE A SISTEMAS WINDOWS)]
+
+Adicionamos antes de tudo uma CRON no sistema
+através dos comandos peculiares a cada distro de sistema unix/based
+
+esta é a linha que é preciso adicionar a cron, claro que alterando para URL do projeto
+* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
+
+Após isso no arquivo app/console/Kernel.php no método chamado schedule adicionamos a tarefa (vide documentação do laravel)
+https://laravel.com/docs/5.5/scheduling
+
