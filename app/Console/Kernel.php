@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('php artisan db:seed --class=ContatosSeeder')
-            ->dailyAt('13:57');
+        $schedule->command('db:seed --class=ContatosSeeder')
+            ->dailyAt('07:00');
 
     }
 
