@@ -14,7 +14,12 @@ OBS.:
 É preciso observar os padrões de configurações básicas de Fila,Events, Mailables e Observers do Laravel 5.5
 
 ////////////////////////////////////////////////////// DETALHES DE CONFIGURAÇÃO
+
 após configurado o banco de dados é necessário rodar
+
+php artisan migrate
+
+após configurado o banco de dados é necessário rodar  
 
 php artisan migrate
 "Para registrar as taelas do projeto"
@@ -25,3 +30,4 @@ php artisan queue:failed-table
 
 
 Existe arquivos CSV de exemplo na pasta /public/files/
+

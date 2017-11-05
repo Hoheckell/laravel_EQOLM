@@ -25,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
             // $event->connectionName
             // $event->job
             // $event->exception
+
         });
+
         Importation::observe(ImportationObserver::class);
     }
 
