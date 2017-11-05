@@ -50,8 +50,9 @@ https://laravel.com/docs/5.5/scheduling
 <br>
 <p>
 <em>
-O Agendador neste projeto esta sendo usado para fins educativos, coloquei apenas pra rodar um seeder.
-se por acaso exibir a mensagem de que a classe do seeder não foi encontrada execute:<br>
+O Agendador neste projeto esta sendo usado para fins educativos, coloquei apenas pra rodar um seeder.<br>
+<em>
+se por acaso exibir a mensagem de que a classe do seeder não foi encontrada execute:</em><br>
 <code>composer dump-autoload</code><br>
 </em>
 </p>
