@@ -34,7 +34,7 @@ após configurado o banco de dados é necessário rodar
 
 ///// 05/11/2017
 
-[Adicionado agendados de Tarefas (SEM SUPORTE A SISTEMAS WINDOWS)]
+[Adicionado agendador de Tarefas (SEM SUPORTE A SISTEMAS WINDOWS)]
 <br>
 <p>
 Adicionamos antes de tudo uma CRON no sistema através dos comandos peculiares a cada distro de sistema unix/based<br>
@@ -50,7 +50,7 @@ https://laravel.com/docs/5.5/scheduling
 <br>
 <p>
 <em>
-O Agendador esta sendo usado para fins educativos, coloquei apenas pra rodar um seeder.
+O Agendador neste projeto esta sendo usado para fins educativos, coloquei apenas pra rodar um seeder.
 se por acaso exibir a mensagem de que a classe do seeder não foi encontrada execute:<br>
 <code>composer dump-autoload</code><br>
 </em>
