@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('db:seed --class=ContatosSeeder')
-            ->dailyAt('07:00');
+            ->dailyAt('09:40');
 
     }
 

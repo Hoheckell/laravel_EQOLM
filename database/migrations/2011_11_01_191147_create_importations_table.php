@@ -16,8 +16,8 @@ class CreateImportationsTable extends Migration
         Schema::create('importations', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->integer('totalines');
-            $table->integer('donelines');
+            $table->integer('totalines')->default(0);
+            $table->integer('donelines')->default(0);
             $table->boolean('imported')->default(false);
             $table->boolean('error')->default(false);
             $table->timestamps();

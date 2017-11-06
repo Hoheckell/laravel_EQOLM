@@ -15,8 +15,12 @@
         </thead>
         <tbody>
         @foreach($importations as $i)
+            <?php
+            // $noty = json_decode($i->notifications);
+            // $noty[0]->data->arquivo
+            ?>
             <tr>
-                <td>{{$i->name}}</td>
+                <td>{{$i->name}} </td>
                 <td>{{$i->created_at->format('d/m/Y')}}</td>
                 <td>
                     @if($i->error > 0)
