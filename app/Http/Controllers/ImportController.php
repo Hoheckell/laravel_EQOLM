@@ -15,7 +15,8 @@ use Nexmo\Laravel\Facade\Nexmo;
 
 class ImportController extends Controller
 {
-    public function index(Schedule $schedule){
+    public function index(Schedule $schedule)
+    {
 
         /* TEST SMS
 //        Nexmo::message()->send([
@@ -24,10 +25,13 @@ class ImportController extends Controller
 //            'text' => 'Using the facade to send a message.'
 //        ]);
         */
+
         return view('upload');
 
     }
-    public function upload(Request $request){
+
+    public function upload(Request $request)
+    {
 
         try {
 
@@ -38,13 +42,12 @@ class ImportController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $fileName = 'file_' . date('d_m_Y_h_i_s') . "_." . $extension;
 
-                if($file->move($destinationPath, $fileName)) {
+                if ($file->move($destinationPath, $fileName)) {
                     $importation = Importation::create([
                         'name' => $fileName
                     ]);
 
-                    //Deve Haver o email de destino especificado no model caso seja enviado por email
-                    $importation->notify(new TestNotification($importation));
+
 
 
                     $job = (new ProcessFile($importation))->delay(Carbon::now()->addMinute());
@@ -52,19 +55,30 @@ class ImportController extends Controller
                 }
             }
 
-        }catch (Exception $e){
+        } catch (Exception $e) {
             die($e->getMessage());
         }
 
-        return redirect('/importations')->with('success',"Arquivo Agendado apra importação");
+        return redirect('/importations')->with('success', "Arquivo Agendado apra importação");
 
     }
 
-    public function importations(){
+    public function importations()
+    {
         $data = [
-            'importations'=>Importation::all()
+            'importations' => Importation::all(),
         ];
-        return view('importations',$data);
+
+        foreach ($data['importations'] as $i) {
+            if(!empty($i->unreadNotifications)) {
+                $noty = json_decode($i->unreadNotifications);
+            }
+        }
+
+        if(!empty($noty)) {
+            $data['noty'] = $noty;
+        }
+        return view('importations', $data);
     }
 
 

@@ -11,7 +11,15 @@
 |
 */
 
+use Carbon\Carbon;
+
 Route::get('/', "ImportController@index");
 Route::post('/upload', 'ImportController@upload');
 Route::get('/importations', 'ImportController@importations');
 Route::resource('contato', 'ContatoController');
+
+Route::get('readnoty/{id}',function($id){
+    $imp = \App\Importation::find($id);
+    $imp->unreadNotifications()->update(['read_at' => Carbon::now()]);
+    return redirect()->back();
+});

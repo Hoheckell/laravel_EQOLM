@@ -31,7 +31,7 @@
     </div>
 </nav>
 <div style="height: 60px; clear: both;display: block"></div>
-    <div class="container">
+    <div class="container-fluid">
     @section('content')
         @show
 </div>

@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Contato;
 use App\Importation;
+use App\Notifications\TestNotification;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -26,7 +27,7 @@ class ProcessFile implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($model){
+    public function __construct(Importation $model){
 
         $this->model = $model;
 
@@ -67,6 +68,10 @@ class ProcessFile implements ShouldQueue
                                 $this->model->donelines += 1;
                                 $this->model->imported = 1;
                                 $this->model->save();
+                            }
+                            if($this->model->totalines == $this->model->donelines){
+                                //Deve Haver o email de destino especificado no model caso seja enviado por email
+                                $this->model->notify(new TestNotification($this->model));
                             }
                             fclose($handle);
                         } else {
