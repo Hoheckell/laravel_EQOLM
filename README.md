@@ -56,3 +56,9 @@ se por acaso exibir a mensagem de que a classe do seeder não foi encontrada exe
 <code>composer dump-autoload</code><br>
 </em>
 </p>
+<p>
+  ///////////07/11/2017
+  [Adicionada funcionalidade de Notifications]
+  Ao completar a importação é gera uma Database notification enviada do Job
+  
+  </p>
